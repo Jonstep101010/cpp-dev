@@ -15,5 +15,15 @@
             "packages": ["valgrind", "bear", "cmake"]
         }
     },
-    "remoteUser": "vscode"
+    "remoteUser": "vscode",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "ms-vscode.cmake-tools",
+                "cschlosser.doxdocgen"
+            ]
+        }
+    }
 }
