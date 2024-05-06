@@ -17,3 +17,4 @@ RUN ln -s /usr/bin/clangd-17 /usr/bin/clangd
 RUN apt-get install -y libclang-rt-17-dev-dbgsym clang-tools-17 libllvm17 llvm-17 llvm-17-dev llvm-17-runtime \
 		libclang-common-17-dev libclang-17-dev libclang1-17 libfuzzer-17-dev libclang-rt-17-dev
 RUN ln -s /usr/bin/llvm-symbolizer-17 /usr/local/bin/llvm-symbolizer
+RUN ln -s /usr/bin/scan-build-17 /usr/local/bin/scan-build
