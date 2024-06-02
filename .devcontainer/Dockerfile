@@ -18,3 +18,4 @@ RUN apt-get install -y libclang-rt-18-dev-dbgsym clang-tools-18 libllvm18 llvm-1
 		libclang-common-18-dev libclang-18-dev libclang1-18 libfuzzer-18-dev libclang-rt-18-dev
 RUN ln -s /usr/bin/llvm-symbolizer-18 /usr/local/bin/llvm-symbolizer
 RUN ln -s /usr/bin/scan-build-18 /usr/local/bin/scan-build
+RUN ln -s /usr/bin/clang++-18 /usr/local/bin/clang++
