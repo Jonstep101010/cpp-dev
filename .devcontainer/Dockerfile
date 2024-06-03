@@ -1,21 +1,26 @@
 FROM --platform=$TARGETPLATFORM mcr.microsoft.com/devcontainers/base:bookworm
-# add apt sources for llvm
-RUN curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-RUN echo "deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-18 main" >> /etc/apt/sources.list.d/llvm.list
-RUN apt-get update --fix-missing && apt-get -y upgrade
 
-# install dependencies
-RUN apt-get install -y wget gnupg gnupg2 gdb autoconf automake autotools-dev libtool bash
+# change sources to testing
+RUN sed -i 's/bookworm/testing/g' /etc/apt/sources.list.d/debian.sources
+RUN touch /etc/apt/sources.list.d/sources.list
+RUN sed -i 's/bookworm/testing/g' /etc/apt/sources.list.d/sources.list
+RUN apt-get update
 
-# install & alias llvm tools
-RUN apt-get install -y --no-install-recommends clang-18 clangd-18 clang-format-18 clang-tidy-18
-RUN ln -s /usr/bin/clang-format-18 /usr/local/bin/clang-format
-RUN ln -s /usr/bin/clang-tidy-18 /usr/local/bin/clang-tidy
-RUN ln -s /usr/bin/clang-18 /usr/bin/clang
-RUN ln -s /usr/bin/clangd-18 /usr/bin/clangd
+RUN apt-get install -y \
+	cmake valgrind gdb wget gnupg gnupg2 autoconf automake autotools-dev libtool bash
 
-RUN apt-get install -y libclang-rt-18-dev-dbgsym clang-tools-18 libllvm18 llvm-18 llvm-18-dev llvm-18-runtime \
-		libclang-common-18-dev libclang-18-dev libclang1-18 libfuzzer-18-dev libclang-rt-18-dev
-RUN ln -s /usr/bin/llvm-symbolizer-18 /usr/local/bin/llvm-symbolizer
-RUN ln -s /usr/bin/scan-build-18 /usr/local/bin/scan-build
-RUN ln -s /usr/bin/clang++-18 /usr/local/bin/clang++
+# add compiler & tools
+RUN apt-get install -y \
+	llvm-17-tools llvm-17-dev clang-17 libclang-rt-17-dev llvm-17-runtime libclang-17-dev \
+	clangd-17 clang-format-17 clang-tidy-17 libfuzzer-17-dev
+
+RUN apt-get -y upgrade
+
+RUN ln -s /usr/bin/clang-format-17 /usr/local/bin/clang-format && \
+	ln -s /usr/bin/clang-tidy-17 /usr/local/bin/clang-tidy && \
+	ln -s /usr/bin/clang-17 /usr/bin/clang && \
+	ln -s /usr/bin/clangd-17 /usr/bin/clangd && \
+	ln -s /usr/bin/llvm-symbolizer-17 /usr/local/bin/llvm-symbolizer && \
+	ln -s /usr/bin/scan-build-17 /usr/local/bin/scan-build && \
+	ln -s /usr/bin/scan-view-17 /usr/local/bin/scan-view && \
+	ln -s /usr/bin/clang++-17 /usr/local/bin/clang++
