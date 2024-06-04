@@ -19,7 +19,8 @@
                 "llvm-vs-code-extensions.vscode-clangd",
                 "ms-vscode.cmake-tools",
                 "cschlosser.doxdocgen",
-                "tintinweb.vscode-inline-bookmarks"
+                "tintinweb.vscode-inline-bookmarks",
+                "frfreyCanonicalClassCPP.canonicalclasscpp"
             ]
         }
     }
