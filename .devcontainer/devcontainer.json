@@ -1,7 +1,7 @@
 {
-    "name": "nix-dev",
+    "name": "cpp-dev",
     "dockerComposeFile": "docker-compose.yml",
-    "service": "nix-dev",
+    "service": "cpp-dev",
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": {
@@ -11,9 +11,6 @@
             "userGid": "1000",
             "upgradePackages": "true"
         },
-        "ghcr.io/devcontainers/features/nix:1": {
-            "packages": ["valgrind", "bear", "cmake"]
-        }
     },
     "customizations": {
         "vscode": {
@@ -21,7 +18,10 @@
                 "ms-vscode.cpptools",
                 "llvm-vs-code-extensions.vscode-clangd",
                 "ms-vscode.cmake-tools",
-                "cschlosser.doxdocgen"
+                "cschlosser.doxdocgen",
+                "tintinweb.vscode-inline-bookmarks",
+                "frfreyCanonicalClassCPP.canonicalclasscpp",
+                "GitHub.copilot-chat"
             ]
         }
     }
